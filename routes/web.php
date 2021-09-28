@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/customers');
 });
+
+Route::get('customers/zipcode_search', [
+    App\Http\Controllers\CustomerController::class, 'search'
+])->name('customers.zipcode_search');
+
+Route::resource('customers', App\Http\Controllers\CustomerController::class);
